@@ -137,6 +137,8 @@
         e.preventDefault(), $("#video2").get(0).play(), $(".finder.fdl").addClass("focus").show()
     })), $("#readme").on("click", (function(e) {
         e.preventDefault(), e.stopPropagation(), $(".finder.readme").addClass("focus").show("slow")
+    })), $("#projectsfile").on("click", (function(e) {
+        e.preventDefault(), e.stopPropagation(), $(".finder.projects").addClass("focus").show("slow")
     })), $("#earththt").on("click", (function(e) {
         e.preventDefault(), e.stopPropagation(), $(".finder.earth").addClass("focus").show("slow")
     })), $(".finder .close").on("click", (function(e) {
