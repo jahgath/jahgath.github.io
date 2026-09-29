@@ -124,21 +124,26 @@
     })), $("#restart").on("click", (function(e) {
         e.preventDefault(), location.reload()
     })), $("#print").on("click", (function(e) {
-        $(".navbar .item.submenu.active").removeClass("active"), e.preventDefault(), window.print()
+        $(".navbar .item.submenu.active").removeClass("active"), e.preventDefault(), (function() {
+            var f = $('<iframe style="position:fixed;width:0;height:0;border:0;visibility:hidden" src="resume/Jagath%20Jijo.pdf"></iframe>').appendTo("body");
+            f.on("load", (function() {
+                try {
+                    this.contentWindow.focus(), this.contentWindow.print()
+                } catch (err) {
+                    window.open("resume/Jagath Jijo.pdf", "_blank")
+                }
+            }))
+        })()
     })), $("#switchfiles").on("click", (function(e) {
         e.preventDefault(), $(".navbar .item.submenu.active").removeClass("active"), $(this).toggleClass("invert"), $("body").toggleClass("show-hidden-files")
     })), $("#folder1").on("click", (function(e) {
         e.preventDefault(), $(".finder.2k49").addClass("focus").show("slow"), $(this).addClass("active")
     })), $("#folder2").on("click", (function(e) {
-        e.preventDefault(), $(this).addClass("active"), setTimeout((function() {
-            $(".dialog").html("<div><p>File corrupted!<br />Please download it again.</p></div>").css("display", "flex")
-        }), 0), $(this).addClass("active")
+        e.preventDefault(), $(".finder.projects").addClass("focus").show("slow"), $(this).addClass("active")
     })), $("#lizard").on("click", (function(e) {
         e.preventDefault(), $("#video2").get(0).play(), $(".finder.fdl").addClass("focus").show()
     })), $("#readme").on("click", (function(e) {
         e.preventDefault(), e.stopPropagation(), $(".finder.readme").addClass("focus").show("slow")
-    })), $("#projectsfile").on("click", (function(e) {
-        e.preventDefault(), e.stopPropagation(), $(".finder.projects").addClass("focus").show("slow")
     })), $("#earththt").on("click", (function(e) {
         e.preventDefault(), e.stopPropagation(), $(".finder.earth").addClass("focus").show("slow")
     })), $(".finder .close").on("click", (function(e) {
