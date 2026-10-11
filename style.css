@@ -4503,7 +4503,7 @@ body.media-playing .screen {
 
 @media (min-width:768px) {
 	body.media-playing .screen {
-		height: 600px
+		height: 100%
 	}
 }
 
@@ -4725,9 +4725,10 @@ a:hover {
 
 @media (min-width:768px) {
 	.screen {
-		box-shadow: 0 0 100px rgba(0, 0, 0, .7);
-		height: 600px;
-		width: 800px
+		border: 0;
+		border-radius: 0;
+		height: 100%;
+		width: 100%
 	}
 }
 
@@ -5058,6 +5059,62 @@ a:hover {
 	margin: 0 0 10px
 }
 
+.finder.albums {
+	left: 60px;
+	top: 90px;
+	z-index: 2;
+	height: 300px;
+	width: 320px
+}
+
+@media (min-width:768px) {
+	.finder.albums {
+		height: 450px;
+		width: 320px
+	}
+}
+
+.finder.albums .body {
+	padding: 10px
+}
+
+.finder.albums .body p {
+	margin: 0 0 10px
+}
+
+.finder.album-viewer {
+	left: 20px;
+	top: 60px;
+	z-index: 2;
+	height: 420px;
+	width: calc(100vw - 42px)
+}
+
+@media (min-width:768px) {
+	.finder.album-viewer {
+		left: 120px;
+		height: 600px;
+		width: 700px
+	}
+}
+
+.finder.album-viewer .body {
+	overflow: hidden
+}
+
+.finder.album-viewer .album-frame {
+	border: 0;
+	display: block;
+	height: calc(100% - 32px);
+	width: 100%
+}
+
+.finder.album-viewer .album-fallback {
+	margin: 0;
+	padding: 6px 10px;
+	text-align: center
+}
+
 .finder.focus {
 	z-index: 3
 }
@@ -5332,6 +5389,26 @@ a:hover {
 	width: 500px
 }
 
+.album-choice {
+	text-align: center
+}
+
+.album-choice .submit {
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: .1875rem;
+	box-shadow: 0 0 0 2px #fff, 0 0 0 5px #000;
+	cursor: pointer;
+	margin: 6px 8px;
+	padding: 2px 8px
+}
+
+.album-choice .submit:active,
+.album-choice .submit:hover {
+	background-color: #000;
+	color: #fff
+}
+
 .dialog.active {
 	display: flex
 }
@@ -5346,6 +5423,12 @@ a:hover {
 	position: absolute;
 	right: 20px;
 	top: 100px
+}
+
+.folder3 {
+	position: absolute;
+	right: 140px;
+	top: 140px
 }
 
 .earthtxt {

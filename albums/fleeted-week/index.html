@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fleeted Week | Jagath Jijo</title>
+  <link rel="stylesheet" href="../viewer.css" />
+</head>
+<body>
+  <div class="bar">
+    <a href="../../">&larr; <span class="hide-sm">BS OS</span></a>
+    <span class="title">Fleeted Week</span>
+    <span class="pager" id="pager"></span>
+    <button id="zout" title="Zoom out">-</button>
+    <button id="zin" title="Zoom in">+</button>
+    <a href="../fleeted-week.pdf" download class="hide-sm">Download</a>
+  </div>
+  <div id="pages"><p id="status">Loading album...</p></div>
+  <div id="viewer" data-pdf="../fleeted-week.pdf" hidden></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="../viewer.js"></script>
+</body>
+</html>

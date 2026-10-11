@@ -34,6 +34,7 @@
 
     <div class="screen">
       <div class="bios"></div>
+      <!-- Password screen disabled. Uncomment this block to bring it back (password: "password").
       <div class="login">
         <div class="login-dialog">
           <div class="login-dialog-content">
@@ -55,6 +56,7 @@
           </div>
         </div>
       </div>
+      -->
       <div class="navbar">
         <div class="left">
           <div class="item submenu">
@@ -131,6 +133,10 @@
         <span>Projects</span>
       </button>
 
+      <button class="file folder folder3 ga-ce" data-category="elements" data-action="click" data-label="albums" id="folder3">
+        <span>Photo Albums</span>
+      </button>
+
       <button class="file image lizard hidden ga-ce" data-category="elements" data-action="click" data-label="lizard" id="lizard">
         <span>dinolove.gif</span>
       </button>
@@ -158,6 +164,33 @@
             <p>MORE:</p>
             <p>- <a href="https://github.com/jahgath" class="ga-ce" data-category="outbound" data-action="click" data-label="https://github.com/jahgath" target="_blank">My GitHub</a></p>
           </div>
+        </div>
+      </div>
+
+      <div class="finder albums">
+        <header class="header">
+          <span class="title">Photo Albums</span>
+          <button class="close">x</button>
+        </header>
+        <div class="body">
+          <div>
+            <p>Photos I take on my camera, put together as albums. Click one to open it.</p>
+            <p>- <a href="albums/fleeted-week.pdf" class="album-link" data-title="Fleeted Week" data-route="albums/fleeted-week/">Fleeted Week</a></p>
+            <!-- To add an album: drop the PDF in ./albums/ and add a line like the one below.
+            <p>- <a href="albums/example.pdf" class="album-link" data-title="Example Album" data-route="albums/example/">Example Album</a></p>
+            -->
+          </div>
+        </div>
+      </div>
+
+      <div class="finder album-viewer">
+        <header class="header">
+          <span class="title">Album</span>
+          <button class="close">x</button>
+        </header>
+        <div class="body">
+          <iframe class="album-frame" title="Photo album"></iframe>
+          <p class="album-fallback"><a href="#" class="album-open" target="_blank">Open in new tab</a></p>
         </div>
       </div>
 

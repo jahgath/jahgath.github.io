@@ -140,6 +140,23 @@
         e.preventDefault(), $(".finder.2k49").addClass("focus").show("slow"), $(this).addClass("active")
     })), $("#folder2").on("click", (function(e) {
         e.preventDefault(), $(".finder.projects").addClass("focus").show("slow"), $(this).addClass("active")
+    })), $("#folder3").on("click", (function(e) {
+        e.preventDefault(), $(".finder.albums").addClass("focus").show("slow"), $(this).addClass("active")
+    })), $(".finder.albums").on("click", ".album-link", (function(e) {
+        e.preventDefault(), e.stopPropagation(), system.albumChoice = {
+            src: $(this).attr("href"),
+            route: $(this).data("route"),
+            title: $(this).data("title") || $(this).text()
+        }, $(".dialog").html('<div class="album-choice"><p>' + system.albumChoice.title + '</p><p><button class="submit" id="album-viewer-btn">Open in viewer</button> <button class="submit" id="album-bsos-btn">Open in BS OS</button></p></div>').css("display", "flex")
+    })), $(".dialog").on("click", "#album-viewer-btn", (function(e) {
+        e.preventDefault(), location.href = system.albumChoice.route
+    })), $(".dialog").on("click", "#album-bsos-btn", (function(e) {
+        e.preventDefault(), e.stopPropagation();
+        var v = $(".finder.album-viewer"),
+            c = system.albumChoice;
+        $(".dialog").css("display", "none").html(""), v.find(".title").text(c.title), v.find(".album-frame").attr("src", c.src), v.find(".album-open").attr("href", c.src), v.addClass("focus").show("slow")
+    })), $(".finder.album-viewer .close").on("click", (function(e) {
+        $(this).closest(".finder").find(".album-frame").attr("src", "about:blank")
     })), $("#lizard").on("click", (function(e) {
         e.preventDefault(), $("#video2").get(0).play(), $(".finder.fdl").addClass("focus").show()
     })), $("#readme").on("click", (function(e) {
