@@ -3,7 +3,9 @@
   pdfjs.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
   var cfg = document.getElementById("viewer").dataset;
   var pagesEl = document.getElementById("pages"), status = document.getElementById("status"), pager = document.getElementById("pager");
-  var pdf, zoom = 1, slots = [], rendered = {};
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  var firstLayout = true;
+  var pdf, zoom = 1, slots = [], rendered = {}, current = 1;
 
   function fitWidth() { return Math.min(window.innerWidth - 24, 1100); }
 
@@ -21,6 +23,7 @@
         io.observe(el);
       });
       status.remove();
+      if (firstLayout) { firstLayout = false; pagesEl.scrollTop = 0; }
       update();
     });
   }
@@ -42,7 +45,14 @@
   function update() {
     var top = pagesEl.scrollTop + pagesEl.clientHeight / 3, cur = 1;
     slots.forEach(function (s, i) { if (s.el.offsetTop <= top) cur = i + 1; });
+    current = cur;
     pager.textContent = cur + " / " + pdf.numPages;
+  }
+
+  function goTo(n) {
+    if (!pdf) return;
+    n = Math.max(1, Math.min(pdf.numPages, n));
+    slots[n - 1] && pagesEl.scrollTo({ top: slots[n - 1].el.offsetTop - 56, behavior: "smooth" });
   }
 
   function setZoom(z) {
@@ -53,6 +63,14 @@
 
   document.getElementById("zin").onclick = function () { setZoom(zoom + .25); };
   document.getElementById("zout").onclick = function () { setZoom(zoom - .25); };
+  document.getElementById("prev").onclick = function () { goTo(current - 1); };
+  document.getElementById("next").onclick = function () { goTo(current + 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); goTo(current - 1); }
+    else if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); goTo(current + 1); }
+    else if (e.key === "Home") { e.preventDefault(); goTo(1); }
+    else if (e.key === "End") { e.preventDefault(); goTo(pdf.numPages); }
+  });
   pagesEl.addEventListener("scroll", function () { pdf && update(); });
   var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { pdf && layout(); }, 200); });
 

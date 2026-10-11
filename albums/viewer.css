@@ -8,7 +8,7 @@ html, body { margin: 0; height: 100%; background: var(--bg); font-family: Chicag
 .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; }
 .pager { white-space: nowrap; }
 #pages { padding: 56px 0 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; overflow: auto; height: 100%; }
-.page { background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.6); max-width: none; }
+.page { flex: none; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.6); max-width: none; }
 .page canvas { display: block; width: 100%; height: 100%; }
 #status { color: #ccc; text-align: center; margin-top: 80px; }
 @media (max-width: 600px) { .bar { gap: 6px; padding: 0 6px; } .hide-sm { display: none; } }
